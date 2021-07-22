@@ -10,16 +10,16 @@ RUN if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then groupmod --g
 # psql
 RUN apt-get update && apt-get install -y postgresql-client
 
-# Create the app directory
+# Define the application's working directory.
 WORKDIR /usr/src/app
 
 # Install dependencies
-COPY package*.json ./
-RUN npm ci --only=production
+ADD package.json /usr/src/app/package.json
+RUN npm install
 
 # Build the app
 COPY . .
 RUN npm run build
 
 # Start the app
-ENTRYPOINT ["npm", "run", "start:dev"]
+ENTRYPOINT ["npm", "start"]

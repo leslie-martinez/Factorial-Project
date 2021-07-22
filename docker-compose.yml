@@ -6,7 +6,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./src:/usr/src/app/src
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     entrypoint: npm run debug:docker
     env_file: .env
     environment:
@@ -17,7 +18,6 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_DATABASE=${DB_DATABASE}
-
   database:
     image: postgres:latest
     restart: unless-stopped

@@ -7,6 +7,14 @@ The metrics should be displayed in a timeline form and be agregrated by average 
 Each metric should have the following attributes : timestamp, name, value
 Metrics should be persisted to the database.
 
+## Endpoints
+
+| Method | path | param | body | description |
+| --- | --- | --- | --- | --- |
+| GET | /metrics | period: string (optional) <br />date:string (optional) | NA | Get list of all metrics or filtered by optional query params (period & date) |
+| GET | /metrics/:id | id: number | NA | Get one metric record by id|
+| GET | /metrics/average/:period | period: string | NA | Get list of average metric data by period|
+| POST | /metrics | NA | ```{name: string, rating: number}``` | Create a new metric record|
 ## Technical Stack
 
 ### Backend
@@ -35,14 +43,18 @@ Metrics should be persisted to the database.
 4. Open the project in your machine or navigate to the folder in your Terminal and run `npm run start:dev`
 5. Your local server should now be running on port 3000. You can access it at `http://localhost:3000`.
 
-### Rebuild Docker container
-1. Run `docker-compose down --remove-orphans`
-1. Run `npm run start:dev`
+## Troubleshooting
+
+1. In case of connection issue with the database, make sure you don't have another local instance running on the same port
+2. If your Docker container build seems corrupted (database default data not inserted etc.), proceed to rebuild the container: 
+    1. Run `docker-compose down --remove-orphans`
+    2. Run `npm run start:dev`
 
 
 ### To go further
 In order to enhance the application, we could look into the following items:
 
 1. Handle dates in local time zone
-2. Use NestJS class-validator for parameters & body validation
+2. Use NestJS class-validator for parameters & body validation to make the app more robust
 3. Write unit tests (using Jest for instance)
+4. Authentication handler

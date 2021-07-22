@@ -79,6 +79,6 @@ export class MetricController {
         message: errorMessage,
       });
     }
-    return response.send(await this.metricService.saveOne(new Metric({ name: name, value: rating })));
+    return response.status(HttpStatus.CREATED).send(await this.metricService.saveOne(new Metric({ name: name, value: rating })));
   }
 }

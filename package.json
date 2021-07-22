@@ -10,7 +10,8 @@
     "dev:database": "docker-compose -f docker-compose-only-db.yml up -d",
     "stop:database": "docker-compose -f docker-compose-only-db.yml down",
     "start:dev": "npm i && npm run dev:database && nest start --watch",
-    "start:debug": "npm run dev:database && nest start --debug --watch"
+    "start:debug": "npm run dev:database && nest start --debug --watch",
+    "debug:docker": "nest start --debug --watch"
   },
   "dependencies": {
     "@nestjs-query/core": "^0.25.0",
