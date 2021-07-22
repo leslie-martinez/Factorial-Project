@@ -36,7 +36,7 @@ Metrics should be persisted to the database.
 5. Your local server should now be running on port 3000. You can access it at `http://localhost:3000`.
 
 ### Rebuild Docker container
-1. Run `docker compose down --remove-orphans` (if you have docker CLI installed) or Run `docker-compose down --remove-orphans` (if not)
+1. Run `docker-compose down --remove-orphans`
 1. Run `npm run start:dev`
 
 
