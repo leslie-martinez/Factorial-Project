@@ -36,11 +36,13 @@ Metrics should be persisted to the database.
 5. Your local server should now be running on port 3000. You can access it at `http://localhost:3000`.
 
 ### Rebuild Docker container
-1. Run `docker compose down --remove-orphans`
+1. Run `docker compose down --remove-orphans` (if you have docker CLI installed) or Run `docker-compose down --remove-orphans` (if not)
 1. Run `npm run start:dev`
 
 
 ### To go further
+In order to enhance the application, we could look into the following items:
+
 1. Handle dates in local time zone
 2. Use NestJS class-validator for parameters & body validation
 3. Write unit tests (using Jest for instance)
