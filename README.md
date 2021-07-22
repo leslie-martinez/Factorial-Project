@@ -28,3 +28,13 @@ Metrics should be persisted to the database.
 2. Clone the project from the [repository](https://github.com/leslie-martinez/factorial-project)
 2. Open the project in your machine or navigate to the folder in your Terminal and run `npm run start:dev`
 3. Your local server should now be running on port 3000. You can access it at `http://localhost:3000`.
+
+### Rebuild Docker container
+1. Run `docker compose down --remove-orphans`
+1. Run `npm run start:dev`
+
+
+### To go further
+1. Handles dates in local time zone
+2. Use NestJS class-validator for parameters & body validation
+3. Write unit tests (using Jest for instance)

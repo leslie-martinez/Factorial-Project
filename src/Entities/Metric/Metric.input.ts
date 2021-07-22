@@ -1,9 +1,9 @@
-import { BaseEntityInput } from '../BaseEntity/BaseEntity.input';
+export class MetricInput {
+  id?: number;
 
-export class MetricInput extends BaseEntityInput {
   name: string;
 
-  value?: number;
+  value: number;
 
   datetime?: Date;
 }

@@ -8,6 +8,5 @@ import { MetricController } from './Metric.controller';
   imports: [NestjsQueryTypeOrmModule.forFeature([Metric])],
   controllers: [MetricController],
   providers: [MetricService],
-  exports: [MetricService],
 })
 export class MetricModule { }

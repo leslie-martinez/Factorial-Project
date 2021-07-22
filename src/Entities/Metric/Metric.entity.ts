@@ -13,7 +13,7 @@ export class Metric extends BaseEntity {
   @Column({ type: 'bigint' })
   datetime: Date;
 
-  constructor(metric?: MetricInput) {
+  constructor(metric: MetricInput) {
     super();
     if (metric) {
       this.id = metric.id;

@@ -8,8 +8,5 @@ import * as ormConfig from './ormConfig';
     TypeOrmModule.forRoot(ormConfig),
     MetricModule
   ],
-  providers: [
-
-  ],
 })
 export class AppModule { }
