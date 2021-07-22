@@ -23,20 +23,11 @@ export class MetricController {
     if (period && date) {
       // Validate period format
       if (period in AverageMetricsPeriod) {
-        // Validate date format
-        if (isNaN(Date.parse(date))) {
-          errorMessage = `invalid input syntax for date: "${date}"`;
-          this.logger.error(errorMessage);
-          response.status(HttpStatus.BAD_REQUEST).json({
-            statusCode: HttpStatus.BAD_REQUEST,
-            message: errorMessage,
-          });
-        }
         metrics = await this.metricService.findByPeriod(period, date);
       } else {
         errorMessage = `invalid input syntax for period: "${period}" - Value should be 'day' | 'hour' | 'minute'`;
         this.logger.error(errorMessage);
-        response.status(HttpStatus.BAD_REQUEST).json({
+        return response.status(HttpStatus.BAD_REQUEST).json({
           statusCode: HttpStatus.BAD_REQUEST,
           message: errorMessage,
         });
@@ -44,7 +35,7 @@ export class MetricController {
     } else {
       metrics = await this.metricService.findAll(null, { datetime: 'ASC' });
     }
-    response.send(metrics);
+    return response.send(metrics);
   }
 
   @Get('/metrics/:id')
@@ -54,22 +45,22 @@ export class MetricController {
       var metric: Metric = await this.metricService.findOneById(id);
     } catch (e) {
       this.logger.error(e.message);
-      response.status(HttpStatus.BAD_REQUEST).json({
+      return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: HttpStatus.BAD_REQUEST,
         message: e.message,
       });
     }
-    response.send(metric);
+    return response.send(metric);
   }
 
   @Get('/metrics/average/:period')
   async averageByPeriod(@Param('period') period: string, @Response() response) {
     if (period in AverageMetricsPeriod) {
-      response.send(await this.metricService.findAverageByPeriod(period));
+      return response.send(await this.metricService.findAverageByPeriod(period));
     }
     const errorMessage = `invalid input syntax for period: "${period}" - Value should be 'day' | 'hour' | 'minute'`;
     this.logger.error(errorMessage);
-    response.status(HttpStatus.BAD_REQUEST).json({
+    return response.status(HttpStatus.BAD_REQUEST).json({
       statusCode: HttpStatus.BAD_REQUEST,
       message: errorMessage,
     });
@@ -83,11 +74,11 @@ export class MetricController {
     if (!name || !rating) {
       const errorMessage = `Invalid body syntax: Body should contain 'name' and 'rating' values.`;
       this.logger.error(errorMessage);
-      response.status(HttpStatus.BAD_REQUEST).json({
+      return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: HttpStatus.BAD_REQUEST,
         message: errorMessage,
       });
     }
-    response.send(await this.metricService.saveOne(new Metric({ name: name, value: rating })));
+    return response.send(await this.metricService.saveOne(new Metric({ name: name, value: rating })));
   }
 }
