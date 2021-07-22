@@ -9,7 +9,7 @@
     "start": "nest start",
     "dev:database": "docker-compose -f docker-compose-only-db.yml up -d",
     "stop:database": "docker-compose -f docker-compose-only-db.yml down",
-    "start:dev": "npm run dev:database && nest start --watch",
+    "start:dev": "npm i && npm run dev:database && nest start --watch",
     "start:debug": "npm run dev:database && nest start --debug --watch"
   },
   "dependencies": {
@@ -25,14 +25,12 @@
     "class-validator": "^0.13.1",
     "dotenv": "^8.2.0",
     "pg": "^8.5.1",
-    "redis": "^3.1.2",
     "typeorm": "^0.2.34"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
     "@types/express-serve-static-core": "^4.17.14",
     "@types/node": "^14.14.10",
-    "@types/redis": "^2.8.28",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "cz-conventional-changelog": "^3.3.0",
