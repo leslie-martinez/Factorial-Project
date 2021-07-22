@@ -51,7 +51,7 @@ Metrics should be persisted to the database.
     2. Run `npm run start:dev`
 
 
-### To go further
+## To go further
 In order to enhance the application, we could look into the following items:
 
 1. Handle dates in local time zone
